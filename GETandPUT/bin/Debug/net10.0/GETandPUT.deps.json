@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v10.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v10.0": {
+      "GETandPUT/1.0.0": {
+        "runtime": {
+          "GETandPUT.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "GETandPUT/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

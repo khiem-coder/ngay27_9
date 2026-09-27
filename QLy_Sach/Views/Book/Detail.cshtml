@@ -1,0 +1,16 @@
+﻿@model QLy_Sach.Models.Book
+
+@{
+    ViewData["Title"] = "Chi tiết sách";
+}
+
+<h2>Chi tiết sách</h2>
+
+<div class="card mt-3" style="width: 25rem;">
+    <div class="card-body">
+        <h5 class="card-title">@Model.Name</h5>
+        <p class="card-text"><strong>Mã sách (Id):</strong> @Model.Id</p>
+        <p class="card-text"><strong>Giá bán (Price):</strong> @Model.Price $</p>
+        <a asp-action="Index" class="btn btn-secondary">Quay lại danh sách</a>
+    </div>
+</div>

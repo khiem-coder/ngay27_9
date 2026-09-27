@@ -1,0 +1,42 @@
+﻿using Microsoft.AspNetCore.Mvc;
+using GETandPUT.Models;
+
+namespace GETandPUT.Controllers
+{
+    public class AccountController : Controller
+    {
+        // GET: Account/Login
+        // Hiển thị form đăng nhập
+        [HttpGet]
+        public IActionResult Login()
+        {
+            return View();
+        }
+
+        // POST: Account/Login
+        // Nhận dữ liệu từ form qua Model Binding và kiểm tra tài khoản
+        [HttpPost]
+        public IActionResult Login(LoginModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+
+            if (model.Username == "admin" && model.Password == "123")
+            {
+                ViewBag.ShowNotification = true;
+                ViewBag.NotificationText = "Login success";
+                ViewBag.NotificationType = "success"; // bootstrap alert type
+            }
+            else
+            {
+                ViewBag.ShowNotification = true;
+                ViewBag.NotificationText = "Login failed";
+                ViewBag.NotificationType = "danger"; // bootstrap alert type
+            }
+
+            return View(model);
+        }
+    }
+}

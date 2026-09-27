@@ -1,0 +1,53 @@
+﻿@model GETandPUT.Models.LoginModel
+
+@{
+    ViewData["Title"] = "Login";
+}
+
+<h2>Đăng nhập</h2>
+
+@if (ViewBag.ShowNotification == true)
+{
+    <div class="modal fade" id="loginNotificationModal" tabindex="-1" aria-labelledby="loginNotificationLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="loginNotificationLabel">Notification</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    @ViewBag.NotificationText
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-@(ViewBag.NotificationType ?? "primary")" data-bs-dismiss="modal">OK</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var modalEl = document.getElementById('loginNotificationModal');
+            if (modalEl && window.bootstrap && typeof bootstrap.Modal === 'function') {
+                var myModal = new bootstrap.Modal(modalEl);
+                myModal.show();
+            }
+        });
+    </script>
+}
+
+<form asp-controller="Account" asp-action="Login" method="post">
+    <div class="form-group">
+        <label asp-for="Username"></label>
+        <input asp-for="Username" class="form-control" />
+        <span asp-validation-for="Username" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Password"></label>
+        <input asp-for="Password" type="password" class="form-control" />
+        <span asp-validation-for="Password" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Login</button>
+</form>
